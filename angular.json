@@ -49,7 +49,9 @@
             "aot": true,
             "assets": ["apps/client/src/favicon.ico", "apps/client/src/assets"],
             "styles": ["apps/client/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "deployUrl": "/manager/",
+            "baseHref": "/manager/"
           },
           "configurations": {
             "production": {
