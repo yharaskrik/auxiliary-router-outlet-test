@@ -144,6 +144,122 @@
           }
         }
       }
+    },
+    "client-not-working": {
+      "projectType": "application",
+      "root": "apps/client-not-working",
+      "sourceRoot": "apps/client-not-working/src",
+      "prefix": "primary-outlet-aux-route-test",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/client-not-working",
+            "index": "apps/client-not-working/src/index.html",
+            "main": "apps/client-not-working/src/main.ts",
+            "polyfills": "apps/client-not-working/src/polyfills.ts",
+            "tsConfig": "apps/client-not-working/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/client-not-working/src/favicon.ico",
+              "apps/client-not-working/src/assets"
+            ],
+            "styles": ["apps/client-not-working/src/styles.scss"],
+            "scripts": [],
+            "deployUrl": "/manager/",
+            "baseHref": "/manager/"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/client-not-working/src/environments/environment.ts",
+                  "with": "apps/client-not-working/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "client-not-working:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "client-not-working:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "client-not-working:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/client-not-working/src/**/*.ts",
+              "apps/client-not-working/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/client-not-working"],
+          "options": {
+            "jestConfig": "apps/client-not-working/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "client-not-working-e2e": {
+      "root": "apps/client-not-working-e2e",
+      "sourceRoot": "apps/client-not-working-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/client-not-working-e2e/cypress.json",
+            "tsConfig": "apps/client-not-working-e2e/tsconfig.e2e.json",
+            "devServerTarget": "client-not-working:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "client-not-working:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/client-not-working-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   }
 }

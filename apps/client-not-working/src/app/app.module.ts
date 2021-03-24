@@ -23,21 +23,29 @@ import { ManagerContainerComponent } from './manager-container/manager-container
       [
         {
           path: '',
-          component: PrimaryContainerComponent,
+          component: ManagerContainerComponent,
           children: [
             {
-              path: 'secondary',
-              outlet: 'sOutlet',
-              component: SecondaryComponent,
-            },
-            {
-              path: 'edit',
-              loadChildren: () =>
-                import('./primary/primary.module').then((m) => m.PrimaryModule),
-            },
-            {
-              path: 'nested',
-              component: PrimaryNestedComponent,
+              path: '',
+              component: PrimaryContainerComponent,
+              children: [
+                {
+                  path: 'secondary',
+                  outlet: 'sOutlet',
+                  component: SecondaryComponent,
+                },
+                {
+                  path: 'edit',
+                  loadChildren: () =>
+                    import('./primary/primary.module').then(
+                      (m) => m.PrimaryModule
+                    ),
+                },
+                {
+                  path: 'nested',
+                  component: PrimaryNestedComponent,
+                },
+              ],
             },
           ],
         },
