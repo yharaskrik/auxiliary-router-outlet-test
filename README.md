@@ -7,4 +7,32 @@ Page loads correctly and routes are loaded right
 (`manager-container`). This one you can load `/manager/edit` and nav to secondary but on reload it throws an error about the 
 outlet already being activated. 
 
-I think this may be a bug in the router but am not sure.
+`Error: Cannot activate an already activated outlet`. All of the SO posts and Angular issues (all of which have been solved) I was able to find talk about this being a lazy
+loading issue or caused by some other problem or error in the console
+
+I think this may be a bug in the router but am not sure. 
+
+I would assume that secondary outlets can be defined at any level in the routing 
+tree as long as there is a router-outlet with the outlet name.
+
+Named outlets seem very finicky because in another project I was able to essentially do this (with loadChildren unwrapped)
+
+```
+[
+{path: '', children: [
+  {
+    path: '',
+    children: [
+      ...sharedSidebarRoutes, <-- an array of routes with "outlet": "sidebar"
+      {
+        path: 'edit',
+        component: EditComponent
+      }
+    ]
+  }
+]}
+]
+```
+
+which "mostly" works but if you try and nest another route into a sub route say 
+`/edit/page` then `/edit/page(sidebar:route1)` does not work but `/edit(sidebar:route1)` does
