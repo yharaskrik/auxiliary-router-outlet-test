@@ -3,15 +3,7 @@ import { RouterModule } from '@angular/router';
 import { PrimaryComponent } from './primary.component';
 
 @NgModule({
-  imports: [
-    RouterModule.forChild([
-      {
-        path: '',
-        component: PrimaryComponent,
-      },
-    ]),
-  ],
-  exports: [RouterModule],
+  exports: [PrimaryComponent],
   declarations: [PrimaryComponent],
 })
 export class PrimaryModule {}

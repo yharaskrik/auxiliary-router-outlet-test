@@ -49,9 +49,7 @@
             "aot": true,
             "assets": ["apps/client/src/favicon.ico", "apps/client/src/assets"],
             "styles": ["apps/client/src/styles.scss"],
-            "scripts": [],
-            "deployUrl": "/manager/",
-            "baseHref": "/manager/"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -165,9 +163,7 @@
               "apps/client-not-working/src/assets"
             ],
             "styles": ["apps/client-not-working/src/styles.scss"],
-            "scripts": [],
-            "deployUrl": "/manager/",
-            "baseHref": "/manager/"
+            "scripts": []
           },
           "configurations": {
             "production": {

@@ -1,0 +1,17 @@
+div.bounding {
+  height: 100px;
+
+  border: 10px solid;
+
+  &.red {
+    border-color: red;
+  }
+
+  &.blue {
+    border-color: blue;
+  }
+}
+
+div.title {
+  text-decoration: underline;
+}

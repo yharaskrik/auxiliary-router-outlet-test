@@ -8,6 +8,7 @@ import { PrimaryComponent } from './primary/primary.component';
 import { PrimaryNestedComponent } from './primary-nested/primary-nested.component';
 import { PrimaryContainerComponent } from './primary-container/primary-container.component';
 import { ManagerContainerComponent } from './manager-container/manager-container.component';
+import { PrimaryModule } from './primary/primary.module';
 
 @NgModule({
   declarations: [
@@ -26,18 +27,13 @@ import { ManagerContainerComponent } from './manager-container/manager-container
           component: PrimaryContainerComponent,
           children: [
             {
+              path: '',
+              component: PrimaryComponent,
+            },
+            {
               path: 'secondary',
               outlet: 'sOutlet',
               component: SecondaryComponent,
-            },
-            {
-              path: 'edit',
-              loadChildren: () =>
-                import('./primary/primary.module').then((m) => m.PrimaryModule),
-            },
-            {
-              path: 'nested',
-              component: PrimaryNestedComponent,
             },
           ],
         },
@@ -50,6 +46,7 @@ import { ManagerContainerComponent } from './manager-container/manager-container
         paramsInheritanceStrategy: 'always',
       }
     ),
+    PrimaryModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

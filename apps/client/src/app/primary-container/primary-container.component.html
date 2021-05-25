@@ -1,7 +1,9 @@
-<div style="border: 3px red solid">
+<div class="bounding red">
+  <div class="title">Primary Outlet</div>
   <router-outlet></router-outlet>
 </div>
-<div style="border: 3px blue solid">
+<div class="bounding blue">
+  <div class="title">Secondary Outlet</div>
   <router-outlet name="sOutlet"></router-outlet>
 </div>
 <button [routerLink]="[{ outlets: { sOutlet: 'secondary' } }]">
